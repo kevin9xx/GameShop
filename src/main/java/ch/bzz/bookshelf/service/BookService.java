@@ -31,7 +31,6 @@ public class BookService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-
     public Response listBooks(
     ) {
         Map<String, Book> bookMap = DataHandler.getBookMap();
@@ -52,7 +51,6 @@ public class BookService {
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
-
     public Response readBook(
             @QueryParam("uuid") String bookUUID
     ) {

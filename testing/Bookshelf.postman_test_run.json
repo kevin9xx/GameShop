@@ -1,0 +1,117 @@
+{
+	"id": "1299e780-cdea-47b2-a757-df137a153994",
+	"name": "Bookshelf",
+	"timestamp": "2021-05-23T10:09:03.943Z",
+	"collection_id": "c3b2504e-081f-4032-8668-6bf2f6348d55",
+	"folder_id": 0,
+	"environment_id": "1bf08897-cc27-4dda-a515-456e229a4c28",
+	"totalPass": 4,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "c1498ed0-37e4-4657-82d8-0d0dbf92a6a0",
+			"name": "Smoke Test",
+			"url": "http://localhost:8080/Bookshelf-1.0/resource/test/test",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "b2c6bbcd-6829-4757-b0e2-0b5f08a45d12",
+			"name": "Book List",
+			"url": "http://localhost:8080/Bookshelf-1.0/resource/book/list",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "82a80885-b0cd-4b3e-b84c-451990dc6b7c",
+			"name": "Book Read",
+			"url": "http://localhost:8080/Bookshelf-1.0/resource/book/read?uuid=3247c340-c712-402e-b400-0a23a9368c97",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"validate response": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"validate response": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 22,
+	"collection": {
+		"requests": [
+			{
+				"id": "c1498ed0-37e4-4657-82d8-0d0dbf92a6a0",
+				"method": "GET"
+			},
+			{
+				"id": "b2c6bbcd-6829-4757-b0e2-0b5f08a45d12",
+				"method": "GET"
+			},
+			{
+				"id": "82a80885-b0cd-4b3e-b84c-451990dc6b7c",
+				"method": "GET"
+			}
+		]
+	}
+}

@@ -1,10 +1,13 @@
 package ch.bzz.bookshelf.service;
 
+import ch.bzz.bookshelf.model.Book;
+
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
-import java.io.FileInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Path;
 import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
@@ -16,11 +19,10 @@ import java.util.Set;
  *
  * @author Marcel Suter (Ghwalin)
  */
-
 @ApplicationPath("/resource")
-
 public class Config extends Application {
-    private static final String PROPERTIES_PATH = "/home/bzz/webapp/book.properties";
+
+    private static final String PROPERTIES_FILENAME = "book.properties";
     private static Properties properties = null;
 
     /**
@@ -42,7 +44,6 @@ public class Config extends Application {
      * @param property the key of the property to be read
      * @return the value of the property
      */
-
     public static String getProperty(String property) {
         if (Config.properties == null) {
             setProperties(new Properties());
@@ -50,7 +51,16 @@ public class Config extends Application {
         }
         String value = Config.properties.getProperty(property);
         if (value == null) return "";
-        return value;
+        return getResourcePath() + "\\" + value;
+    }
+
+    /**
+     * gets the resource path
+     */
+    private static Path getResourcePath() {
+        String pathname = Config.class.getClassLoader().getResource(PROPERTIES_FILENAME).getFile();
+        Path path = new File(pathname).toPath().getParent();
+        return path;
     }
 
     /**
@@ -60,7 +70,7 @@ public class Config extends Application {
 
         InputStream inputStream = null;
         try {
-            inputStream = new FileInputStream(PROPERTIES_PATH);
+            inputStream = Config.class.getClassLoader().getResourceAsStream(PROPERTIES_FILENAME);
             properties.load(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
@@ -73,9 +83,7 @@ public class Config extends Application {
                 e.printStackTrace();
                 throw new RuntimeException();
             }
-
         }
-
     }
 
     /**
@@ -83,7 +91,6 @@ public class Config extends Application {
      *
      * @param properties the value to set
      */
-
     private static void setProperties(Properties properties) {
         Config.properties = properties;
     }
