@@ -6,16 +6,15 @@
 	},
 	"item": [
 		{
-			"name": "Smoke Test",
+			"name": "LU02.1 Testservice",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status test\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							""
+							"pm.expect(\"HTTP-Status\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -37,26 +36,25 @@
 						"test",
 						"test"
 					]
-				},
-				"description": "Smoke Test"
+				}
 			},
 			"response": []
 		},
 		{
-			"name": "Book List",
+			"name": "LU03.1 Bookshelf",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status test\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});\r",
-							"\r",
-							"pm.test(\"validate response\", function() {\r",
-							"    pm.response.to.be.json;\r",
-							"    pm.expect(pm.response.text()).to.include(\"title\");\r",
-							"})"
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"validate response\", function() {",
+							"    pm.response.to.be.json;",
+							"    pm.expect(pm.response.text()).to.include(\"title\");",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -66,15 +64,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/Bookshelf-1.0/resource/book/list",
-					"protocol": "http",
+					"raw": "{{URI}}resource/book/list",
 					"host": [
-						"localhost"
+						"{{URI}}resource"
 					],
-					"port": "8080",
 					"path": [
-						"Bookshelf-1.0",
-						"resource",
 						"book",
 						"list"
 					]
@@ -83,7 +77,7 @@
 			"response": []
 		},
 		{
-			"name": "Book Read",
+			"name": "LU03.2 Read Book",
 			"event": [
 				{
 					"listen": "test",
@@ -120,6 +114,82 @@
 						{
 							"key": "uuid",
 							"value": "3247c340-c712-402e-b400-0a23a9368c97"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LU03.3 Read unknown Book",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URI}}resource/book/read?uuid=3247c340-ffff-402e-b400-0a23a9368c97",
+					"host": [
+						"{{URI}}resource"
+					],
+					"path": [
+						"book",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "3247c340-ffff-402e-b400-0a23a9368c97"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LU03.4 Read Book with invalid uuid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URI}}resource/book/read?uuid=3247c340-xyzq-402e-b400-0a23a9368c97",
+					"host": [
+						"{{URI}}resource"
+					],
+					"path": [
+						"book",
+						"read"
+					],
+					"query": [
+						{
+							"key": "uuid",
+							"value": "3247c340-xyzq-402e-b400-0a23a9368c97"
 						}
 					]
 				}
