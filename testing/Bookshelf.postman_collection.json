@@ -52,7 +52,11 @@
 							"pm.test(\"Status test\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							""
+							"\r",
+							"pm.test(\"validate response\", function() {\r",
+							"    pm.response.to.be.json;\r",
+							"    pm.expect(pm.response.text()).to.include(\"title\");\r",
+							"})"
 						],
 						"type": "text/javascript"
 					}
