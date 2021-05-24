@@ -1,7 +1,5 @@
 package ch.bzz.bookshelf.service;
 
-import ch.bzz.bookshelf.model.Book;
-
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.io.File;
@@ -51,7 +49,7 @@ public class Config extends Application {
         }
         String value = Config.properties.getProperty(property);
         if (value == null) return "";
-        return getResourcePath() + "\\" + value;
+        return getResourcePath() + File.separator + value;
     }
 
     /**

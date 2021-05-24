@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c3b2504e-081f-4032-8668-6bf2f6348d55",
+		"_postman_id": "2ca1257c-b882-4a73-99b4-dc071c17c4b6",
 		"name": "Bookshelf",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -12,7 +12,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.expect(\"HTTP-Status\", function () {",
+							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});"
 						],
@@ -64,11 +64,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{URI}}resource/book/list",
+					"raw": "http://localhost:8080/Bookshelf-1.0/resource/book/list",
+					"protocol": "http",
 					"host": [
-						"{{URI}}resource"
+						"localhost"
 					],
+					"port": "8080",
 					"path": [
+						"Bookshelf-1.0",
+						"resource",
 						"book",
 						"list"
 					]
@@ -102,11 +106,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{URI}}resource/book/read?uuid=3247c340-c712-402e-b400-0a23a9368c97",
+					"raw": "http://localhost:8080/Bookshelf-1.0/resource/book/read?uuid=3247c340-c712-402e-b400-0a23a9368c97",
+					"protocol": "http",
 					"host": [
-						"{{URI}}resource"
+						"localhost"
 					],
+					"port": "8080",
 					"path": [
+						"Bookshelf-1.0",
+						"resource",
 						"book",
 						"read"
 					],
@@ -140,11 +148,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{URI}}resource/book/read?uuid=3247c340-ffff-402e-b400-0a23a9368c97",
+					"raw": "http://localhost:8080/Bookshelf-1.0/resource/book/read?uuid=3247c340-ffff-402e-b400-0a23a9368c97",
+					"protocol": "http",
 					"host": [
-						"{{URI}}resource"
+						"localhost"
 					],
+					"port": "8080",
 					"path": [
+						"Bookshelf-1.0",
+						"resource",
 						"book",
 						"read"
 					],
@@ -178,11 +190,15 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{URI}}resource/book/read?uuid=3247c340-xyzq-402e-b400-0a23a9368c97",
+					"raw": "http://localhost:8080/Bookshelf-1.0/resource/book/read?uuid=3247c340-xyzq-402e-b400-0a23a9368c97",
+					"protocol": "http",
 					"host": [
-						"{{URI}}resource"
+						"localhost"
 					],
+					"port": "8080",
 					"path": [
+						"Bookshelf-1.0",
+						"resource",
 						"book",
 						"read"
 					],
