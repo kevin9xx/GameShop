@@ -33,6 +33,7 @@ public class Config extends Application {
         HashSet providers = new HashSet<Class<?>>();
         providers.add(TestService.class);
         providers.add(BookService.class);
+        providers.add(PublisherService.class);
         return providers;
     }
 
