@@ -10,39 +10,24 @@ import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
 
-/**
- * configure the web services and properties
- * <p>
- * M151: BookDB
- *
- * @author Marcel Suter (Ghwalin)
- */
+
 @ApplicationPath("/resource")
 public class Config extends Application {
 
-    private static final String PROPERTIES_FILENAME = "book.properties";
+    private static final String PROPERTIES_FILENAME = "game.properties";
     private static Properties properties = null;
 
-    /**
-     * define all provider classes
-     *
-     * @return set of classes
-     */
+
     @Override
     public Set<Class<?>> getClasses() {
         HashSet providers = new HashSet<Class<?>>();
         providers.add(TestService.class);
-        providers.add(BookService.class);
+        providers.add(GameService.class);
         providers.add(PublisherService.class);
         return providers;
     }
 
-    /**
-     * Gets the value of a property
-     *
-     * @param property the key of the property to be read
-     * @return the value of the property
-     */
+
     public static String getProperty(String property) {
         if (Config.properties == null) {
             setProperties(new Properties());
@@ -53,18 +38,14 @@ public class Config extends Application {
         return getResourcePath() + File.separator + value;
     }
 
-    /**
-     * gets the resource path
-     */
+
     private static Path getResourcePath() {
         String pathname = Config.class.getClassLoader().getResource(PROPERTIES_FILENAME).getFile();
         Path path = new File(pathname).toPath().getParent();
         return path;
     }
 
-    /**
-     * reads the properties file
-     */
+
     private static void readProperties() {
 
         InputStream inputStream = null;
@@ -85,11 +66,7 @@ public class Config extends Application {
         }
     }
 
-    /**
-     * Sets the properties
-     *
-     * @param properties the value to set
-     */
+
     private static void setProperties(Properties properties) {
         Config.properties = properties;
     }

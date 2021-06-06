@@ -9,21 +9,11 @@ import javax.ws.rs.core.Response;
 import java.util.Map;
 import java.util.UUID;
 
-/**
- * provides services for the publisher
- * <p>
- * M133: Bookshelf
- *
- * @author arcel Suter
- */
+
 @Path("publisher")
 public class PublisherService {
 
-    /**
-     * produces a map of all publishers
-     *
-     * @return Response
-     */
+
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
@@ -37,12 +27,7 @@ public class PublisherService {
         return response;
     }
 
-    /**
-     * reads a single publisher identified by the uuid
-     *
-     * @param publisherUUID the UUID in the URL
-     * @return Response
-     */
+
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
@@ -58,7 +43,7 @@ public class PublisherService {
             if (publisher.getPublisher() != null) {
                 httpStatus = 200;
             } else {
-                httpStatus = 404;
+                httpStatus = 200;
             }
         } catch (IllegalArgumentException argEx) {
             httpStatus = 400;
